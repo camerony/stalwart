@@ -1,0 +1,113 @@
+[server]
+hostname = "mail.cameron.in"
+[[server.listeners]]
+protocol = "smtp"
+bind = "[::]:25"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "smtp"
+bind = "0.0.0.0:25"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+[[server.listeners]]
+protocol = "submission"
+bind = "[::]:587"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "submission"
+bind = "0.0.0.0:587"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "submissions"
+bind = "[::]:465"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "submissions"
+bind = "0.0.0.0:465"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+[[server.listeners]]
+protocol = "imap"
+bind = "[::]:143"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "imap"
+bind = "0.0.0.0:143"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "imaps"
+bind = "[::]:993"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "imaps"
+bind = "0.0.0.0:993"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+[[server.listeners]]
+protocol = "pop3"
+bind = "[::]:110"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "pop3"
+bind = "0.0.0.0:110"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "pop3s"
+bind = "[::]:995"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "pop3s"
+bind = "0.0.0.0:995"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "managesieve"
+bind = "[::]:4190"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+
+[[server.listeners]]
+protocol = "managesieve"
+bind = "0.0.0.0:4190"
+[server.listeners.proxy-protocol]
+trusted-ips = ["10.0.1.34", "10.0.1.0/24"]
+[[server.listeners]]
+protocol = "http"
+bind = "[::]:8080"
+[[server.listeners]]
+protocol = "http"
+bind = "0.0.0.0:8080"
+
+[store."rocksdb"]
+type = "rocksdb"
+path = "/var/lib/stalwart"
+
+[directory."local"]
+type = "internal"
+
+[auth]
+directory = "local"
+
+[session]
+transfer-limit = 262144000

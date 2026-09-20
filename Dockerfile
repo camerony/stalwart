@@ -35,6 +35,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     chown stalwart:stalwart /etc/stalwart /var/lib/stalwart
 COPY --from=builder --chmod=0755 /output/stalwart /usr/local/bin/stalwart
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/stalwart
+COPY stalwart.toml /etc/stalwart/stalwart.toml
 USER stalwart
 WORKDIR /var/lib/stalwart
 VOLUME ["/etc/stalwart", "/var/lib/stalwart"]
@@ -43,4 +44,4 @@ ENV STALWART_HEALTHCHECK_URL=https://127.0.0.1:443/healthz/live
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
     CMD curl -fsSk -H "X-Forwarded-For: 127.0.0.1" "$STALWART_HEALTHCHECK_URL" || curl -fsS -H "X-Forwarded-For: 127.0.0.1" http://127.0.0.1:8080/healthz/live || exit 1
 ENTRYPOINT ["/usr/local/bin/stalwart"]
-CMD ["--config", "/etc/stalwart/config.json"]
+CMD ["--config", "/etc/stalwart/stalwart.toml"]
